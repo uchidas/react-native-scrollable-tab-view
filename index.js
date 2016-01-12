@@ -115,6 +115,9 @@ var ScrollableTabView = React.createClass({
          initialPage={this.props.initialPage}
          onPageSelected={this._updateSelectedPage}
          onPageScroll={(e) => {
+           if (this.props.locked) {
+            return;
+           }
            const {offset, position} = e.nativeEvent;
            this._updateScrollValue(position + offset);
          }}
